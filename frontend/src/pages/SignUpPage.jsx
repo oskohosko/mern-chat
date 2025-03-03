@@ -3,6 +3,8 @@ import { useAuthStore } from '../store/useAuthStore'
 import { MessageSquare, User, Mail, EyeOff, Eye, Lock, Loader2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+import AuthImagePattern from '../components/AuthImagePattern'
+
 export default function SignUpPage() {
   // State for the show password icon
   const [showPassword, setShowPassword] = useState(false)
@@ -132,7 +134,10 @@ export default function SignUpPage() {
       </div>
 
       {/* Right side */}
-      
+      <AuthImagePattern
+        title="Join our community"
+        subtitle="Connect with friends, share moments, and stay in touch."
+      />
 
     </div>
   )
