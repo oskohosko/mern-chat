@@ -4,6 +4,7 @@ import { MessageSquare, User, Mail, EyeOff, Eye, Lock, Loader2 } from 'lucide-re
 import { Link } from 'react-router-dom'
 
 import AuthImagePattern from '../components/AuthImagePattern'
+import toast from 'react-hot-toast'
 
 export default function SignUpPage() {
   // State for the show password icon
@@ -19,11 +20,38 @@ export default function SignUpPage() {
 
   // Function that can validate our form
   const validateForm = () => {
+    // Checking if full name has been submitted
+    if (!formData.fullName.trim()) {
+      return toast.error("Full name is required.")
+    }
+    // Now email address
+    if (!formData.email.trim()) {
+      return toast.error("Email is required.")
+    }
+    // And using a regular expression to handle email format
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      return toast.error("Invalid email format.")
+    }
+    // And password
+    if (!formData.password) {
+      return toast.error("Password is required.")
+    }
+
+    if (formData.password.length < 6) {
+      return toast.error("Password must be greater than 6 characters.")
+    }
+
+    return true
 
   }
   // Handles the submission of the form
   const handleSubmit = (e) => {
     e.preventDefault()
+    const success = validateForm()
+
+    if (success) {
+      signup(formData)
+    }
   }
 
 

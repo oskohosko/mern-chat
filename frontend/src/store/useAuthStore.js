@@ -1,5 +1,6 @@
 import { create } from "zustand"
-import { axiosInstance } from "../lib/axios"
+import { axiosInstance } from "../lib/axios.js"
+import toast from "react-hot-toast"
 
 // Global state management
 export const useAuthStore = create((set) => ({
@@ -29,5 +30,29 @@ export const useAuthStore = create((set) => ({
     }
   },
 
-  
+  // When validation on the form is complete, we call this method to sign up the user
+  signup: async (data) => {
+    set({ isSigningUp: true })
+
+    try {
+      const res = await axiosInstance.post("/auth/signup", data)
+      set({ authUser: res.data })
+      toast.success("Account created successfully.")
+    } catch (error) {
+      toast.error(error.response.data.message)
+    } finally {
+      set({ isSigningUp: false })
+    }
+  },
+
+  // Now the logout functionality
+  logout: async () => {
+    try {
+      await axiosInstance.post("/auth/logout")
+      set({ authUser: null })
+      toast.success("Logged out successfully")
+    } catch (error) {
+      toast.error(error.response.data.message)
+    }
+  }
 }))

@@ -24,7 +24,7 @@ app.use(cors({
 
 // Endpoints
 app.use("/api/auth", authRoutes)
-app.use("/api/message", messageRoutes)
+app.use("/api/messages", messageRoutes)
 
 // Setting up the app
 app.listen(PORT, () => {
