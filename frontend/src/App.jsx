@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage"
 import SettingsPage from "./pages/SettingsPage"
 import ProfilePage from "./pages/ProfilePage"
 import { useAuthStore } from "./store/useAuthStore"
+import { useThemeStore } from "./store/useThemeStore"
 import { useEffect } from "react"
 
 import { Loader } from "lucide-react"
@@ -15,6 +16,7 @@ export default function App() {
   // Authentication state to help with management
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore()
 
+  const { theme } = useThemeStore()
   // Checking if the user is authenticated
   useEffect(() => {
     checkAuth()
@@ -29,7 +31,7 @@ export default function App() {
     </div>
   )
   return (
-    <div>
+    <div data-theme={theme}>
       {/* We want the navbar component at the top */}
       <Navbar />
 
