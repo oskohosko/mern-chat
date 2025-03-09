@@ -5,7 +5,7 @@ import { getMessages, getUsersForSidebar, sendMessage } from "../controllers/mes
 const router = express.Router()
 
 // Fetching users for our sidebar
-router.get("/user", protectRoute, getUsersForSidebar)
+router.get("/users", protectRoute, getUsersForSidebar)
 
 // Now for the messages
 router.get("/:id", protectRoute, getMessages)
