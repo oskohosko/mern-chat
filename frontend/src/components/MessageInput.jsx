@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { useChatStore } from '../store/useChatStore'
-import { Image, Send } from 'lucide-react'
+import { Image, Send, X } from 'lucide-react'
 
 export default function MessageInput() {
 
@@ -97,7 +97,7 @@ export default function MessageInput() {
           <button
             type="button"
             className={`hidden sm:flex btn btn-circle
-                     ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
+                     ${imagePreview ? "text-emerald-500" : "text-zinc-700"}`}
             onClick={() => fileInputRef.current?.click()}
           >
             <Image size={20} />
