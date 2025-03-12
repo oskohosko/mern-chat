@@ -7,10 +7,9 @@ import cors from "cors"
 // Using module so use .js on the end
 import authRoutes from "./routes/auth.route.js"
 import messageRoutes from "./routes/message.route.js"
+import { app, server } from "./lib/socket.js"
 
 // Setting up app
-const app = express()
-
 dotenv.config()
 const PORT = process.env.PORT
 
@@ -27,7 +26,7 @@ app.use("/api/auth", authRoutes)
 app.use("/api/messages", messageRoutes)
 
 // Setting up the app
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`)
   connectDB()
 })
