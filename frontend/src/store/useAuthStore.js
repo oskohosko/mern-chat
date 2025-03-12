@@ -114,11 +114,20 @@ export const useAuthStore = create((set, get) => ({
       return
     }
     // Connecting to backend server
-    const socket = io(BASE_URL, {})
+    const socket = io(BASE_URL, {
+      query: {
+        userId: authUser._id
+      }
+    })
 
     socket.connect()
 
     set({ socket: socket })
+
+    // Listening for online users
+    socket.on("getOnlineUsers", (userIds) => {
+      set({ onlineUsers: userIds })
+    })
   },
 
   disconnectSocket: () => {

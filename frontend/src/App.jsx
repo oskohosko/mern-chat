@@ -14,9 +14,12 @@ import { Toaster } from "react-hot-toast"
 
 export default function App() {
   // Authentication state to help with management
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore()
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore()
 
   const { theme } = useThemeStore()
+
+  // console.log("Online users:", { onlineUsers })
+
   // Checking if the user is authenticated
   useEffect(() => {
     checkAuth()
