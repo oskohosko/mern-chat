@@ -10,14 +10,48 @@ export default function MessageInput() {
   const { sendMessage } = useChatStore()
 
   const handleImageChange = (e) => {
+    const file = e.target.files[0]
 
+    if (!file.type.startsWith("image")) {
+      toast.error("Please select an image file")
+      return
+    }
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setImagePreview(reader.result)
+    }
+    reader.readAsDataURL(file)
   }
 
   const removeImage = () => {
-
+    setImagePreview(null)
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
   }
 
   const handleSendMessage = async (e) => {
+    e.preventDefault()
+
+    // If there's no text and no image, return
+    if (!text.trim() && !imagePreview) {
+      return
+    }
+
+    try {
+      // Sending the message with text and image
+      await sendMessage({
+        text: text.trim(),
+        image: imagePreview
+      })
+
+      // Clearing the form after sending the message
+      setText('')
+      removeImage()
+    } catch (error) {
+      console.error("Failed to send message", error)
+
+    }
 
   }
 
