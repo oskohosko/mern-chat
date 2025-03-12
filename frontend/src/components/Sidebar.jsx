@@ -2,13 +2,14 @@ import { useEffect } from "react"
 import { useChatStore } from "../store/useChatStore"
 import SidebarSkeleton from "./skeletons/SidebarSkeleton"
 import { Users } from "lucide-react"
+import { useAuthStore } from "../store/useAuthStore"
 
 
 export default function Sidebar() {
 
   const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore()
 
-  const onlineUsers = []
+  const { onlineUsers } = useAuthStore()
 
   useEffect(() => {
     getUsers()
@@ -35,7 +36,7 @@ export default function Sidebar() {
             onClick={() => setSelectedUser(user)}
             className={`
               w-full p-3 flex items-center gap-3
-              hover:bg-base-300 transition-colors
+              hover:bg-base-300 transition-colors cursor-pointer
               ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}
             `}
           >
