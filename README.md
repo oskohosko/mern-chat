@@ -22,6 +22,9 @@ Users and Messages are saved in my MongoDB database.
 ## Testing
 Continuous testing done using Postman for the APIs and I've got friends testing it after it was deployed.
 
+## Deployment
+App has been deployed using Render.
+
 ## Overview
 Fun app to help me develop my Full Stack skills and learn more about React and deploying an application.
 Aim is to help give me a foundation to build off for more projects and bigger applications.
