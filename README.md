@@ -29,9 +29,9 @@ Bonus is that I'm able to use it with my friends.
 
 # Screenshots
 <p>
-  <img src="/screenshots/loginDefault" width=400 alt="Login Page">
-  <img src="/screenshots/chatExample" width=400 alt="Example of a chat">
-  <img src="/screenshots/createAccount" width=400 alt="Create account page">
-  <img src="/screenshots/themes" width=400 alt="The themes available from Daisy UI">
-  <img src="/screenshots/loginTheme" width=400 alt="Example of a theme in use">
+  <img src="/screenshots/loginDefault.png" width=400 alt="Login Page">
+  <img src="/screenshots/chatExample.png" width=400 alt="Example of a chat">
+  <img src="/screenshots/createAccount.png" width=400 alt="Create account page">
+  <img src="/screenshots/themes.png" width=400 alt="The themes available from Daisy UI">
+  <img src="/screenshots/loginTheme.png" width=400 alt="Example of a theme in use">
 </p>
