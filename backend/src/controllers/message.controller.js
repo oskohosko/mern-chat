@@ -2,6 +2,9 @@ import User from "../models/user.model.js"
 import Message from "../models/message.model.js"
 
 import cloudinary from "../lib/cloudinary.js"
+import { getReceiverSocketId } from "../lib/socket.js"
+
+import { io } from "../lib/socket.js"
 
 // Want to fetch every user except us
 export const getUsersForSidebar = async (req, res) => {
@@ -76,7 +79,12 @@ export const sendMessage = async (req, res) => {
 
     await newMessage.save()
 
-    //! TODO - realtime functionality goes here => socket.io websockets
+    const receiverSocketId = getReceiverSocketId(receiverId)
+    // If the user is online then send message in realtime
+    if (receiverSocketId) {
+      // Not emitting to everyone, just the receiver
+      io.to(receiverSocketId).emit("newMessage", newMessage)
+    }
 
     res.status(201).json(newMessage)
 
