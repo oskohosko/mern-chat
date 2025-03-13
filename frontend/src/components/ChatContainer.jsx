@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useChatStore } from '../store/useChatStore'
 import ChatHeader from './ChatHeader'
 import MessageInput from './MessageInput'
@@ -12,6 +12,9 @@ export default function ChatContainer() {
 
   const { authUser } = useAuthStore()
 
+  // Ref for scrolling to the end of the messages
+  const messageEndRef = useRef(null)
+
   useEffect(() => {
     getMessages(selectedUser._id)
     // When we get messages, listen for new ones
@@ -22,6 +25,13 @@ export default function ChatContainer() {
       unSubscribeFromMessages()
     }
   }, [selectedUser._id, getMessages, subscribeToMessages, unSubscribeFromMessages])
+
+  // Use effect hook for scrolling to the end of the new message
+  useEffect(() => {
+    if (messageEndRef.current && messages) {
+      messageEndRef.current.scrollIntoView({ behavior: "smooth" })
+    }
+  }, [messages])
 
   if (isMessagesLoading) {
     return (
@@ -45,6 +55,7 @@ export default function ChatContainer() {
             // If the authenticated user is sending the message, we want message on the right
             // Else on the left
             className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}
+            ref={messageEndRef}
           >
             <div className="chat-image avatar">
               <div className="size-10 rounded-full">

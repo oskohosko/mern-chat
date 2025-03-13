@@ -55,8 +55,12 @@ export const useChatStore = create((set, get) => ({
 
     const socket = useAuthStore.getState().socket
 
-    // Todo: optimize this function
     socket.on("newMessage", (newMessage) => {
+      // Making sure we message the selecter user only.
+      const isMessageSentFromSelectedUser = newMessage.senderId === selectedUser._id
+      if (!isMessageSentFromSelectedUser) {
+        return
+      }
       // Spreading messages array and adding new one at the end in realtime
       set({
         messages: [...get().messages, newMessage]
@@ -70,6 +74,5 @@ export const useChatStore = create((set, get) => ({
     socket.off("newMessage")
   },
 
-  // TODO optimize this function
   setSelectedUser: (selectedUser) => set({ selectedUser })
 }))
