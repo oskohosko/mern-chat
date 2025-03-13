@@ -16,7 +16,7 @@ export default function Navbar() {
               <div className="size-9 rounded-lg bg-primary/10 flex items-center justify-center">
                 <MessageSquare className="size-5 text-primary" />
               </div>
-              <h1 className="text-lg font-bold">Chatty</h1>
+              <h1 className="text-lg font-bold">Yapskr</h1>
             </Link>
           </div>
           {/* Right section */}

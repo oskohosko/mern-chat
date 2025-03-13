@@ -1,0 +1,21 @@
+{
+  "name": "mern-chat",
+  "version": "1.0.0",
+  "description": "MERN Full-Stack Chat Application using web sockets, MongoDB, Express.js, Node.js and React. Purpose of this application for me is to learn :).",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oskohosko/mern-chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oskohosko/mern-chat/issues"
+  },
+  "homepage": "https://github.com/oskohosko/mern-chat#readme"
+}

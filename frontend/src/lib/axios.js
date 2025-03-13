@@ -3,7 +3,7 @@ import axios from "axios"
 
 export const axiosInstance = axios.create({
   // API url
-  baseURL: "http://localhost:5001/api",
+  baseURL: import.meta.env.MODE === "development" ? "http://localhost:5001/api" : "/api",
   // Sending cookies with every request
   withCredentials: true
 })

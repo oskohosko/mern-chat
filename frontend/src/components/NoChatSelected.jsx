@@ -17,9 +17,9 @@ export default function NoChatSelected() {
         </div>
 
         {/* Welcome Text */}
-        <h2 className="text-2xl font-bold">Welcome to Chatty!</h2>
+        <h2 className="text-2xl font-bold">Welcome to Yapskr!</h2>
         <p className="text-base-content/60">
-          Select a conversation from the sidebar to start chatting
+          Select a conversation from the sidebar to start yapping.
         </p>
       </div>
     </div>
